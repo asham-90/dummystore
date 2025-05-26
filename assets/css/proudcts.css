@@ -59,7 +59,10 @@
     justify-content: center;
 
 }
-
+.bestSelling .row {
+    justify-content: center;
+    gap: 20px;
+}
 .addBtn{
     margin-top:5px ;
     border: 0;
