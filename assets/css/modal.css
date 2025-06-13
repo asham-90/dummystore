@@ -1,0 +1,53 @@
+.modal-img{
+    width: 400px;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 19px 17px 10px 4px rgba(0, 0, 0, 0.4);
+ 
+ 
+
+  
+}
+
+.img-modal{
+    position: relative;
+}
+.modal{
+
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+
+
+}
+
+.l-arrow,.r-arrow,.close-mark{
+    position: absolute;
+    font-size: 20px;
+    background-color: #D3D3D3;
+    border-radius: 50%;
+    padding: 10px 10px;
+}
+
+.l-arrow{
+    left: 10px;
+    top: 50%;
+}
+
+.r-arrow{
+    right: 10px;
+    top: 50%;
+}
+
+.close-mark{
+    top: 10px;
+    right: 10px;
+}

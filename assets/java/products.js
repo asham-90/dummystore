@@ -54,6 +54,9 @@ const displayDetails = async () => {
 
 
 
+
+
+
 displayDetails();
 
 

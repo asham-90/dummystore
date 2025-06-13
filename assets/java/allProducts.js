@@ -51,186 +51,124 @@ const displayAllProducts = async () => {
 
     document.querySelector(".allProducts .row").innerHTML=result
 
-
-
-
-
-
-
+    ProductModal();
 
 }
-
 
 
 displayAllProducts();
 
 
+const ProductModal = () => {
 
 
+    const images = Array.from( document.querySelectorAll(".img-m"))
 
+    const modal = document.querySelector(".modal")
 
-/*function custommodal(){
+    const modalImg = document.querySelector(".modal-img")
 
+    const RightArrow = document.querySelector(".r-arrow")
 
-    const modal = document.querySelector(".my-modal");
-    
-    const larrow = document.querySelector(".arrow-l");
-    
-    const img =  Array.from( document.querySelectorAll(".img-m"));
-    
-    const Rarrow = document.querySelector(".arrow-r");
-    
-    const closeBtn = document.querySelector(".xmrk ");
+    const leftArrow = document.querySelector(".l-arrow")
 
-    let currentIdex = 0
+    const closeButton = document.querySelector(".close-mark")
 
-
-    img.forEach(function(image){
-
-
+    let currentIndex = 0
 
     
-        image.addEventListener(`click`,image.onclick = (e) => {
+
+    images.forEach( (i) =>{
+
+        i.onclick = (e)=>{
 
             modal.classList.remove("d-none")
-            modal.querySelector("img").setAttribute("src",e.target.src)
-            const currentImg = e.target
-            currentIdex=  img.indexOf(currentImg);
-            console.log(currentIdex)
-            
 
-        } )
+             currentImg = e.target
 
-    })
+            currentImgSrc = e.target.getAttribute("src")
+
+           modalImg.setAttribute("src" , currentImgSrc)
+
+        
+           currentIndex = images.indexOf(currentImg)
+
+        
+        }
+    } )
 
 
 
-    closeBtn.addEventListener(`click`,(e)=>{
+    RightArrow.onclick = () =>{
 
+        ++currentIndex
+
+       if(currentIndex>=images.length){
+        currentIndex=0
+       }
+
+       modalImg.setAttribute("src" , images[currentIndex].getAttribute("src"))
+        
+    }
+
+ 
+
+    leftArrow.onclick = () =>{
+
+        --currentIndex
+     
+        if (currentIndex === 0){
+
+            currentIndex = 0
+        }else{
+
+            modalImg.setAttribute("src" , images[currentIndex].getAttribute("src"))
+
+        }
+
+        
+    }
+
+    closeButton.onclick= () => {
         modal.classList.add("d-none")
-
-    });
-
-
-    Rarrow.addEventListener("click",(e)=>{
-
-        currentIdex++;
+    }
 
 
-        if(currentIdex >= img.length){
+    document.onkeydown = (e)=>{
 
-            currentIdex=0;
+
+        if(e.code == "Escape"){
+            modal.classList.add("d-none")
         }
 
 
-        
-
-        const src = img[currentIdex].getAttribute("src")
-
-        modal.querySelector("img").setAttribute("src",src)
-
-        })
+        if(e.code == "ArrowRight"){
 
 
+        ++currentIndex
 
-        larrow.addEventListener("click",(e)=>{
-
-            currentIdex--;
-
-
-            if(currentIdex < 0){
-
-    
-                currentIdex = img.length -1
-            }
-    
-    
-        
-    
-            const src = img[currentIdex].getAttribute("src")
-    
-            modal.querySelector("img").setAttribute("src",src)
-    
-            })
-
-        
-        document.addEventListener("keydown",(e)=>{
-
-            if(e.code == "ArrowRight"){
-
-                currentIdex++;
-
-
-                if(currentIdex >= img.length){
-
-                    currentIdex=0;
-                }
-        
-        
-               
-        
-                const src = img[currentIdex].getAttribute("src")
-        
-                modal.querySelector("img").setAttribute("src",src)
-        
-                }
-
-                console.log(e.key)
-
-
-            })
-           
-
-        
-
-
-            document.addEventListener("keydown",(e)=>{
-
-                if(e.code == "ArrowLeft"){
-
-                    currentIdex--;
-    
-    
-                    if(currentIdex < 0){
-
-    
-                        currentIdex = img.length - 1;
-                    }
+        if(currentIndex>=images.length){
+         currentIndex=0
+        }
+ 
+        modalImg.setAttribute("src" , images[currentIndex].getAttribute("src"))
             
+        }
+
+
+        if(e.code == "ArrowLeft"){
             
-                    const src = img[currentIdex].getAttribute("src")
-            
-                    modal.querySelector("img").setAttribute("src",src)
-            
-                    }
-                 
-    
-    
-                })
+        --currentIndex
+     
+        if (currentIndex === 0){
 
+            currentIndex = 0
+        }else{
 
+            modalImg.setAttribute("src" , images[currentIndex].getAttribute("src"))
 
-                document.addEventListener("keydown",(e)=>{
+        }
+        }
 
-                    if(e.code == "Escape"){
-
-                        modal.classList.add("d-none")
-    
-      
-                
-                        }
-        
-        
-                    })
-
-
-
-
-
-    };
-*/
-
-
-
-
-
+    }
+}
