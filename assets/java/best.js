@@ -45,7 +45,9 @@ const addTobestselling = async () => {
     }).join(' ')
 
 
+   
     document.querySelector(".bestSelling .row").innerHTML = result;
+
 
 
 }

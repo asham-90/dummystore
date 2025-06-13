@@ -46,13 +46,12 @@ const displayDetails = async () => {
 
     }).join(' ')
     
+ 
     document.querySelector(".productss .row").innerHTML = result;
     document.querySelector(".looding").classList.add("d-none")
+
+    ProductModal();
 }
-
-
-
-
 
 
 
@@ -60,7 +59,119 @@ const displayDetails = async () => {
 displayDetails();
 
 
+const ProductModal = () => {
 
+
+    const images = Array.from( document.querySelectorAll(".img-m"))
+
+    const modal = document.querySelector(".modal")
+
+    const modalImg = document.querySelector(".modal-img")
+
+    const RightArrow = document.querySelector(".r-arrow")
+
+    const leftArrow = document.querySelector(".l-arrow")
+
+    const closeButton = document.querySelector(".close-mark")
+
+    let currentIndex = 0
+
+    
+
+    images.forEach( (i) =>{
+
+        i.onclick = (e)=>{
+
+            modal.classList.remove("d-none")
+
+             currentImg = e.target
+
+            currentImgSrc = e.target.getAttribute("src")
+
+           modalImg.setAttribute("src" , currentImgSrc)
+
+        
+           currentIndex = images.indexOf(currentImg)
+
+        
+        }
+    } )
+
+
+
+    RightArrow.onclick = () =>{
+
+        ++currentIndex
+
+       if(currentIndex>=images.length){
+        currentIndex=0
+       }
+
+       modalImg.setAttribute("src" , images[currentIndex].getAttribute("src"))
+        
+    }
+
+ 
+
+    leftArrow.onclick = () =>{
+
+        --currentIndex
+     
+        if (currentIndex === 0){
+
+            currentIndex = 0
+        }else{
+
+            modalImg.setAttribute("src" , images[currentIndex].getAttribute("src"))
+
+        }
+
+        
+    }
+
+    closeButton.onclick= () => {
+        modal.classList.add("d-none")
+    }
+
+
+    document.onkeydown = (e)=>{
+
+
+        if(e.code == "Escape"){
+            modal.classList.add("d-none")
+        }
+
+
+        if(e.code == "ArrowRight"){
+
+
+        ++currentIndex
+
+        if(currentIndex>=images.length){
+         currentIndex=0
+        }
+ 
+        modalImg.setAttribute("src" , images[currentIndex].getAttribute("src"))
+            
+        }
+
+
+        if(e.code == "ArrowLeft"){
+            
+        --currentIndex
+     
+        if (currentIndex === 0){
+
+            currentIndex = 0
+        }else{
+
+            modalImg.setAttribute("src" , images[currentIndex].getAttribute("src"))
+
+        }
+        }
+
+    }
+}
 
 
 
